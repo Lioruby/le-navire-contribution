@@ -1,23 +1,9 @@
-import { useState } from "react";
+import { ExpensesPage } from "@root/modules/expenses/react/ExpensesPage";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div data-testid="app">
-      <div></div>
-      <h1 className="text-3xl font-bold underline">Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div data-testid="app" className="text-gray-800">
+      <ExpensesPage />
     </div>
   );
 }

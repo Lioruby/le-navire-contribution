@@ -1,0 +1,14 @@
+export namespace ExpensesDomainModel {
+  export type Expense = {
+    totalRevenue: number;
+    totalExpenses: number;
+    totalReceived: number;
+    payments: Payment[];
+  };
+
+  export type Payment = {
+    amount: number;
+    name: string;
+    email: string;
+  };
+}

@@ -3,6 +3,7 @@ import { Dependencies } from "@root/modules/store/dependencies";
 import { StubStorageProvider } from "@root/modules/global/core/testing/stub-storage.provider";
 import { InMemoryAnalyticsGateway } from "@root/modules/global/gateways-impl/in-memory-analytics.gateway";
 import { AppState } from "@root/modules/store/app-state";
+import { InMemoryExpensesGateway } from "../expenses/gateways-impl/in-memory-expenses.gateway";
 
 /**
  * Create testing dependencies with provided defaults
@@ -10,10 +11,11 @@ import { AppState } from "@root/modules/store/app-state";
  * @returns
  */
 const createDependencies = (
-  dependencies?: Partial<Dependencies>,
+  dependencies?: Partial<Dependencies>
 ): Dependencies => ({
   analyticsGateway: new InMemoryAnalyticsGateway(),
   storageProvider: new StubStorageProvider(),
+  expensesGateway: new InMemoryExpensesGateway(),
   ...dependencies,
 });
 
