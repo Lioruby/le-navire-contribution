@@ -10,7 +10,7 @@ export default function LastPayments({
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-xl font-semibold text-gray-900">
+          <h1 className="text-xl font-semibold text-white">
             DERNIERS DONATEURS
           </h1>
         </div>
@@ -23,7 +23,7 @@ export default function LastPayments({
                 <tr>
                   <th
                     scope="col"
-                    className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
+                    className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0"
                   >
                     <a href="#" className="group inline-flex">
                       Nom
@@ -37,7 +37,19 @@ export default function LastPayments({
                   </th>
                   <th
                     scope="col"
-                    className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                    className="px-3 py-3.5 text-left text-sm font-semibold text-white opacity-0"
+                  >
+                    Type de paiement
+                    <span className="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
+                      <ChevronDownIcon
+                        aria-hidden="true"
+                        className="invisible ml-2 size-5 flex-none rounded text-gray-400 group-hover:visible group-focus:visible"
+                      />
+                    </span>
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-3 py-3.5 text-left text-sm font-semibold text-white"
                   >
                     Montant
                     <span className="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
@@ -47,16 +59,49 @@ export default function LastPayments({
                       />
                     </span>
                   </th>
+                  <th
+                    scope="col"
+                    className="px-3 py-3.5 text-left text-sm font-semibold text-white opacity-0"
+                  >
+                    Type de paiement
+                    <span className="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
+                      <ChevronDownIcon
+                        aria-hidden="true"
+                        className="invisible ml-2 size-5 flex-none rounded text-gray-400 group-hover:visible group-focus:visible"
+                      />
+                    </span>
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-3 py-3.5 text-left text-sm font-semibold text-white"
+                  >
+                    Type de paiement
+                  </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200 bg-white">
+              <tbody className="divide-y divide-gray-500 bg-gray-900">
                 {payments.map((payment, index) => (
                   <tr key={payment.email + index}>
-                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
                       {payment.name}
                     </td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                    <td></td>
+                    <td className="whitespace-nowrap px-3 py-4 text-sm text-white">
                       {payment.amount}€
+                    </td>
+                    <td></td>
+                    <td className="whitespace-nowrap px-3 py-4 text-sm">
+                      <div
+                        className={`px-2 py-1 w-fit text-xs ${
+                          payment.paymentType === "one-time"
+                            ? "bg-blue-700"
+                            : "bg-green-700"
+                        } rounded-md text-white`}
+                      >
+                        {payment.paymentType === "one-time"
+                          ? "Ponctuel"
+                          : "Récurrent"}
+                      </div>
                     </td>
                   </tr>
                 ))}
