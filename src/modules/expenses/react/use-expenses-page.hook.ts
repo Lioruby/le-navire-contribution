@@ -4,6 +4,7 @@ import { ExpensesDomainModel } from "../core/models/expenses.domain-model";
 import { Socket } from "socket.io-client";
 import { io } from "socket.io-client";
 import { BASE_URL } from "@root/modules/store/dependencies";
+import confetti from "canvas-confetti";
 
 export const useExpensesPage = () => {
   const { expensesGateway } = useDependencies();
@@ -32,8 +33,7 @@ export const useExpensesPage = () => {
     });
 
     socketRef.current.on("get-ledger-activity", () => {
-      playSound();
-      getExpenses();
+      onPaymentReceived();
     });
 
     socketRef.current.on("connect_error", (error) => {
@@ -52,5 +52,46 @@ export const useExpensesPage = () => {
     audioRef.current.play().catch(console.error);
   };
 
-  return { expenses, playSound };
+  const onPaymentReceived = () => {
+    playSound();
+    getExpenses();
+    fireConfetti();
+  };
+
+  return { expenses, playSound, onPaymentReceived };
+};
+
+const fireConfetti = () => {
+  // Left
+  confetti({
+    particleCount: 200,
+    spread: 120,
+    origin: { y: 0.3, x: 0.1 },
+    colors: ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff"],
+    startVelocity: 30,
+    gravity: 0.8,
+    ticks: 300,
+  });
+
+  // Center
+  confetti({
+    particleCount: 200,
+    spread: 120,
+    origin: { y: 0.3, x: 0.5 },
+    colors: ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff"],
+    startVelocity: 30,
+    gravity: 0.8,
+    ticks: 300,
+  });
+
+  // Right
+  confetti({
+    particleCount: 200,
+    spread: 120,
+    origin: { y: 0.3, x: 0.9 },
+    colors: ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff"],
+    startVelocity: 30,
+    gravity: 0.8,
+    ticks: 300,
+  });
 };
