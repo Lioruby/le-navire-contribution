@@ -7,7 +7,7 @@ import { BASE_URL } from "@root/modules/store/dependencies";
 
 export const useExpensesPage = () => {
   const { expensesGateway } = useDependencies();
-  const audioRef = useRef(new Audio("assets/cash-register.mp3"));
+  const audioRef = useRef(new Audio("assets/kabuki.mp3"));
 
   const [expenses, setExpenses] = useState<ExpensesDomainModel.Expense | null>(
     null
@@ -48,6 +48,7 @@ export const useExpensesPage = () => {
   }, []);
 
   const playSound = () => {
+    audioRef.current.currentTime = 0;
     audioRef.current.play().catch(console.error);
   };
 

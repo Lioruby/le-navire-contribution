@@ -10,7 +10,7 @@ export const TotalExpenses = ({ totalExpenses }: { totalExpenses: number }) => {
         </div>
       </div>
       <div className="mt-6">
-        <p className="text-9xl font-bold">{totalExpenses}€</p>
+        <p className="text-7xl font-bold">{totalExpenses}€</p>
       </div>
     </div>
   );

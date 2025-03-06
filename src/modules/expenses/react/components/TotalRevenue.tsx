@@ -11,7 +11,7 @@ export const TotalRevenue = ({ totalRevenue }: { totalRevenue: number }) => {
       </div>
       <div className="mt-6">
         <p
-          className={`text-9xl font-bold ${totalRevenue > 0 ? "text-green-600" : "text-red-600"}`}
+          className={`text-7xl font-bold ${totalRevenue > 0 ? "text-green-600" : "text-red-600"}`}
         >
           {totalRevenue}€
         </p>
