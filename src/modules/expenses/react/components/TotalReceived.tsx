@@ -10,7 +10,7 @@ export const TotalReceived = ({ totalReceived }: { totalReceived: number }) => {
         </div>
       </div>
       <div className="mt-6">
-        <p className="text-6xl md:text-9xl font-bold">{totalReceived}€</p>
+        <p className="text-7xl font-bold">{totalReceived}€</p>
       </div>
     </div>
   );
