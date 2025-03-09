@@ -10,7 +10,7 @@ export default function LastPayments({
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-xl font-semibold text-white">
+          <h1 className="text-xl font-semibold text-black">
             DERNIERS DONATEURS
           </h1>
         </div>
@@ -23,7 +23,7 @@ export default function LastPayments({
                 <tr>
                   <th
                     scope="col"
-                    className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0"
+                    className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-black sm:pl-0"
                   >
                     <a href="#" className="group inline-flex">
                       Nom
@@ -37,7 +37,7 @@ export default function LastPayments({
                   </th>
                   <th
                     scope="col"
-                    className="px-3 py-3.5 text-left text-sm font-semibold text-white opacity-0"
+                    className="px-3 py-3.5 text-left text-sm font-semibold text-black opacity-0"
                   >
                     Type de paiement
                     <span className="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
@@ -49,7 +49,7 @@ export default function LastPayments({
                   </th>
                   <th
                     scope="col"
-                    className="px-3 py-3.5 text-left text-sm font-semibold text-white"
+                    className="px-3 py-3.5 text-left text-sm font-semibold text-black"
                   >
                     Montant
                     <span className="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
@@ -61,7 +61,7 @@ export default function LastPayments({
                   </th>
                   <th
                     scope="col"
-                    className="px-3 py-3.5 text-left text-sm font-semibold text-white opacity-0"
+                    className="px-3 py-3.5 text-left text-sm font-semibold text-black opacity-0"
                   >
                     Type de paiement
                     <span className="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
@@ -73,20 +73,20 @@ export default function LastPayments({
                   </th>
                   <th
                     scope="col"
-                    className="px-3 py-3.5 text-left text-sm font-semibold text-white"
+                    className="px-3 py-3.5 text-left text-sm font-semibold text-black"
                   >
                     Type de paiement
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-500 bg-gray-900">
+              <tbody className="divide-y divide-gray-500 bg-white">
                 {payments.map((payment, index) => (
                   <tr key={payment.email + index}>
-                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
+                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-black sm:pl-0">
                       {payment.name}
                     </td>
                     <td></td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-white">
+                    <td className="whitespace-nowrap px-3 py-4 text-sm text-black">
                       {payment.amount}€
                     </td>
                     <td></td>
