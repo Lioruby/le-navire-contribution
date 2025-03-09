@@ -10,5 +10,6 @@ export namespace ExpensesDomainModel {
     amount: number;
     name: string;
     email: string;
+    paymentType: "one-time" | "recurring";
   };
 }
