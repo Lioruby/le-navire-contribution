@@ -8,7 +8,7 @@ export const ExpensesPage = () => {
   const { expenses } = useExpensesPage();
 
   return (
-    <div className="flex flex-col gap-4 p-5 h-screen overflow-hidden bg-white">
+    <div className="flex flex-col gap-4 p-5 h-screen md:overflow-hidden bg-white">
       <div className="flex gap-10 flex-wrap">
         <TotalExpenses totalExpenses={expenses?.totalExpenses ?? 0} />
         <TotalReceived totalReceived={expenses?.totalReceived ?? 0} />
