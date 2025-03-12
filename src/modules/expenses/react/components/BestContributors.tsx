@@ -1,22 +1,32 @@
 import { ChevronDownIcon } from "lucide-react";
 import { ExpensesDomainModel } from "../../core/models/expenses.domain-model";
 import { ContributorBadge } from "./ContributorBadge";
+import { cn } from "@root/modules/shared/react/libs/cn";
 
 export default function BestContributors({
   contributors,
+  startIndex = 0,
 }: {
   contributors: ExpensesDomainModel.Contributor[];
+  startIndex?: number;
 }) {
+  if (contributors.length === 0) return null;
+
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-md font-semibold text-black">
+          <h1
+            className={cn(
+              "text-md font-semibold text-black",
+              startIndex === 0 ? "opacity-100" : "opacity-0"
+            )}
+          >
             MEILLEURS DONATEURS
           </h1>
         </div>
       </div>
-      <div className="mt-4 flow-root">
+      <div className="flow-root">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
             <table className="min-w-full divide-y divide-gray-200">
@@ -67,7 +77,7 @@ export default function BestContributors({
                   <tr key={contributor.name + index}>
                     <td className="whitespace-nowrap py-2 pl-4 pr-3 text-xs font-medium text-black sm:pl-0">
                       <div className="flex items-center gap-2">
-                        <ContributorBadge index={index} />
+                        <ContributorBadge index={index + startIndex} />
                         <p>{contributor.name}</p>
                       </div>
                     </td>

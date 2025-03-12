@@ -17,9 +17,18 @@ export const ExpensesPage = () => {
       </div>
 
       <div className="w-full">
-        <BestContributors contributors={expenses?.topContributors ?? []} />
+        <div className="flex items-start">
+          <BestContributors
+            contributors={expenses?.topContributors.slice(0, 9) ?? []}
+            startIndex={0}
+          />
+          <BestContributors
+            contributors={expenses?.topContributors.slice(9, 18) ?? []}
+            startIndex={9}
+          />
+        </div>
         <div className="h-5"></div>
-        <LastPayments payments={expenses?.payments.slice(0, 3) ?? []} />
+        <LastPayments payments={expenses?.payments ?? []} />
       </div>
     </div>
   );
