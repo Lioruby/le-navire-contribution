@@ -1,17 +1,18 @@
 import { ChevronDownIcon } from "lucide-react";
 import { ExpensesDomainModel } from "../../core/models/expenses.domain-model";
+import { ContributorBadge } from "./ContributorBadge";
 
-export default function LastPayments({
-  payments,
+export default function BestContributors({
+  contributors,
 }: {
-  payments: ExpensesDomainModel.Payment[];
+  contributors: ExpensesDomainModel.Contributor[];
 }) {
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-md font-semibold text-black">
-            DERNIERS DONATEURS
+            MEILLEURS DONATEURS
           </h1>
         </div>
       </div>
@@ -59,49 +60,20 @@ export default function LastPayments({
                       />
                     </span>
                   </th>
-                  <th
-                    scope="col"
-                    className="text-left text-xs font-semibold text-black opacity-0"
-                  >
-                    Type de paiement
-                    <span className="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
-                      <ChevronDownIcon
-                        aria-hidden="true"
-                        className="invisible ml-2 size-5 flex-none rounded text-gray-400 group-hover:visible group-focus:visible"
-                      />
-                    </span>
-                  </th>
-                  <th
-                    scope="col"
-                    className="text-left text-xs font-semibold text-black"
-                  >
-                    Type de paiement
-                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 bg-white">
-                {payments.map((payment, index) => (
-                  <tr key={payment.email + index}>
+                {contributors.map((contributor, index) => (
+                  <tr key={contributor.name + index}>
                     <td className="whitespace-nowrap py-2 pl-4 pr-3 text-xs font-medium text-black sm:pl-0">
-                      {payment.name}
+                      <div className="flex items-center gap-2">
+                        <ContributorBadge index={index} />
+                        <p>{contributor.name}</p>
+                      </div>
                     </td>
                     <td></td>
                     <td className="whitespace-nowrap px-1 py-2 text-xs text-black">
-                      {payment.amount}€
-                    </td>
-                    <td></td>
-                    <td className="whitespace-nowrap px-1 py-2 text-xs">
-                      <div
-                        className={`px-2 py-1 w-fit text-xs ${
-                          payment.paymentType === "one-time"
-                            ? "bg-blue-700"
-                            : "bg-green-700"
-                        } rounded-md text-white`}
-                      >
-                        {payment.paymentType === "one-time"
-                          ? "Ponctuel"
-                          : "Récurrent"}
-                      </div>
+                      {contributor.amount}€
                     </td>
                   </tr>
                 ))}

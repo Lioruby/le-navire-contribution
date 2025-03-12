@@ -2,7 +2,7 @@ import { Wallet } from "lucide-react";
 
 export const TotalRevenue = ({ totalRevenue }: { totalRevenue: number }) => {
   return (
-    <div className="p-10 rounded-xl shadow-md bg-gray-100 w-full md:w-fit">
+    <div className="p-7 rounded-xl shadow-md bg-gray-100 w-full">
       <div className="flex items-center justify-between">
         <h1 className="text-sm md:text-xl font-semibold">REVENUE TOTAL</h1>
         <div className="p-3 bg-blue-700 text-blue-100 rounded-full">

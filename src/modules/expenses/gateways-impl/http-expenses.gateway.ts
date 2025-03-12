@@ -1,12 +1,14 @@
 import { AxiosInstance } from "axios";
-import { IExpensesGateway } from "../core/gateways/expenses.gateway";
-import { ExpensesDomainModel } from "../core/models/expenses.domain-model";
+import {
+  IExpensesGateway,
+  ExpensesResponse,
+} from "../core/gateways/expenses.gateway";
 
 export class HttpExpensesGateway implements IExpensesGateway {
   constructor(private readonly httpClient: AxiosInstance) {}
 
-  async getExpenses(): Promise<ExpensesDomainModel.Expense> {
-    const response = await this.httpClient.get<ExpensesDomainModel.Expense>(
+  async getExpenses(): Promise<ExpensesResponse> {
+    const response = await this.httpClient.get<ExpensesResponse>(
       "/le-navire-expenses/payments/get-expenses-data"
     );
 

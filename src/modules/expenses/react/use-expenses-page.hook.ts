@@ -1,18 +1,16 @@
 import { useDependencies } from "@root/modules/app/react/DepenciesProvider";
 import { useState, useEffect, useRef } from "react";
-import { ExpensesDomainModel } from "../core/models/expenses.domain-model";
 import { Socket } from "socket.io-client";
 import { io } from "socket.io-client";
 import { BASE_URL } from "@root/modules/store/dependencies";
 import confetti from "canvas-confetti";
+import { ExpensesResponse } from "../core/gateways/expenses.gateway";
 
 export const useExpensesPage = () => {
   const { expensesGateway } = useDependencies();
   const audioRef = useRef(new Audio("assets/kabuki.mp3"));
 
-  const [expenses, setExpenses] = useState<ExpensesDomainModel.Expense | null>(
-    null
-  );
+  const [expenses, setExpenses] = useState<ExpensesResponse | null>(null);
 
   const getExpenses = async () => {
     const expenses = await expensesGateway.getExpenses();

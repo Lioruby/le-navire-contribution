@@ -12,4 +12,9 @@ export namespace ExpensesDomainModel {
     email: string;
     paymentType: "one-time" | "recurring";
   };
+
+  export type Contributor = {
+    amount: number;
+    name: string;
+  };
 }
