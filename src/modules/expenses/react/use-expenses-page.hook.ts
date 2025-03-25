@@ -1,10 +1,8 @@
 import { useDependencies } from "@root/modules/app/react/DepenciesProvider";
 import { useState, useEffect, useRef } from "react";
-import { Socket } from "socket.io-client";
-import { io } from "socket.io-client";
-import { BASE_URL } from "@root/modules/store/dependencies";
 import confetti from "canvas-confetti";
 import { ExpensesResponse } from "../core/gateways/expenses.gateway";
+import { WS_URL } from "@root/modules/store/dependencies";
 
 export const useExpensesPage = () => {
   const { expensesGateway } = useDependencies();
@@ -16,31 +14,56 @@ export const useExpensesPage = () => {
     const expenses = await expensesGateway.getExpenses();
     setExpenses(expenses);
   };
+  const wsRef = useRef<WebSocket>();
 
   useEffect(() => {
     getExpenses();
   }, []);
 
-  const socketRef = useRef<Socket>();
-
   useEffect(() => {
-    socketRef.current = io(BASE_URL, {
-      transports: ["websocket"],
-      reconnection: true,
-      timeout: 10000,
-    });
+    let reconnectAttempt = 0;
+    const maxReconnectDelay = 30000;
 
-    socketRef.current.on("get-ledger-activity", () => {
-      onPaymentReceived();
-    });
+    const connectWebSocket = () => {
+      console.log("Try to connect to WebSocket...");
+      wsRef.current = new WebSocket(WS_URL);
 
-    socketRef.current.on("connect_error", (error) => {
-      console.error("Connection error:", error);
-    });
+      wsRef.current.onopen = () => {
+        console.log("WebSocket connected");
+        reconnectAttempt = 0;
+      };
+
+      wsRef.current.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.type === "payment-received") {
+          onPaymentReceived();
+          return;
+        }
+        getExpenses();
+      };
+
+      wsRef.current.onclose = () => {
+        console.log("WebSocket connection lost");
+        const delay = Math.min(
+          1000 * Math.pow(2, reconnectAttempt),
+          maxReconnectDelay
+        );
+        reconnectAttempt++;
+
+        console.log(`Try to reconnect in ${delay / 1000} seconds...`);
+        setTimeout(connectWebSocket, delay);
+      };
+
+      wsRef.current.onerror = (error) => {
+        console.error("WebSocket error:", error);
+      };
+    };
+
+    connectWebSocket();
 
     return () => {
-      if (socketRef.current) {
-        socketRef.current.disconnect();
+      if (wsRef.current) {
+        wsRef.current.close();
       }
     };
   }, []);

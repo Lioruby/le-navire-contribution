@@ -19,12 +19,12 @@ export const ExpensesPage = () => {
       <div className="w-full">
         <div className="flex items-start">
           <BestContributors
-            contributors={expenses?.topContributors.slice(0, 9) ?? []}
-            startIndex={0}
+            title="Meilleurs donateurs (all time)"
+            contributors={expenses?.allTimeTopContributors ?? []}
           />
           <BestContributors
-            contributors={expenses?.topContributors.slice(9, 18) ?? []}
-            startIndex={9}
+            title="Meilleurs donateurs (du mois)"
+            contributors={expenses?.monthlyTopContributors ?? []}
           />
         </div>
         <div className="h-5"></div>

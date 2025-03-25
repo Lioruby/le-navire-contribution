@@ -5,7 +5,8 @@ export type ExpensesResponse = {
   totalExpenses: number;
   totalReceived: number;
   payments: ExpensesDomainModel.Payment[];
-  topContributors: ExpensesDomainModel.Contributor[];
+  allTimeTopContributors: ExpensesDomainModel.Contributor[];
+  monthlyTopContributors: ExpensesDomainModel.Contributor[];
 };
 
 export interface IExpensesGateway {

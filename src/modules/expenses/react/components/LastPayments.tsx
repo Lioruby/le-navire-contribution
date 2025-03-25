@@ -10,12 +10,12 @@ export default function LastPayments({
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-md font-semibold text-black">
+          <h1 className="text-sm font-semibold text-black">
             DERNIERS DONATEURS
           </h1>
         </div>
       </div>
-      <div className="mt-4 flow-root">
+      <div className="flow-root">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
             <table className="min-w-full divide-y divide-gray-200">
