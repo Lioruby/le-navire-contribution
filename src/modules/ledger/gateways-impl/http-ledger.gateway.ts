@@ -33,14 +33,12 @@ export class HttpLedgerGateway implements ILedgerGateway {
       totalRevenue: response.data.totalRevenue,
       totalExpenses: response.data.totalExpenses,
       totalReceived: response.data.totalReceived,
-      payments: response.data.payments
-        .map((payment) => ({
-          amount: payment.amount,
-          name: payment.name,
-          email: payment.email,
-          paymentType: payment.payment_type,
-        }))
-        .reverse(),
+      payments: response.data.payments.map((payment) => ({
+        amount: payment.amount,
+        name: payment.name,
+        email: payment.email,
+        paymentType: payment.payment_type,
+      })),
       allTimeTopContributors: response.data.allTimeTopContributors,
       monthlyTopContributors: response.data.monthlyTopContributors,
     };

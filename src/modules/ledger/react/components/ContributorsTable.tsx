@@ -5,9 +5,11 @@ import { ContributorBadge } from "./ContributorBadge";
 export const ContributorsTable = ({
   title,
   contributors,
+  highlightTop = true,
 }: {
   title: string;
   contributors: LedgerDomainModel.Contributor[];
+  highlightTop?: boolean;
 }) => {
   if (contributors.length === 0) return null;
 
@@ -65,7 +67,10 @@ export const ContributorsTable = ({
                   <tr key={contributor.name + index}>
                     <td className="whitespace-nowrap py-2 pl-4 pr-3 text-xs font-medium text-black sm:pl-0">
                       <div className="flex items-center gap-2">
-                        <ContributorBadge index={index} />
+                        <ContributorBadge
+                          index={index}
+                          shouldHighlight={highlightTop}
+                        />
                         <p>{contributor.name}</p>
                       </div>
                     </td>

@@ -27,14 +27,19 @@ export const ExpensesPage = () => {
 
       <div className="w-full">
         <div className="flex items-start">
-          <ContributorsTable
-            title="Meilleurs donateurs (all time)"
-            contributors={ledger?.allTimeTopContributors ?? []}
-          />
-          <ContributorsTable
-            title="Meilleurs donateurs (du mois)"
-            contributors={ledger?.monthlyTopContributors ?? []}
-          />
+          <div className="p-1 rounded-xl shadow-md">
+            <ContributorsTable
+              title="Meilleurs donateurs du mois"
+              contributors={ledger?.monthlyTopContributors ?? []}
+            />
+          </div>
+          <div className="p-1">
+            <ContributorsTable
+              title="Meilleurs donateurs all time"
+              contributors={ledger?.allTimeTopContributors ?? []}
+              highlightTop={false}
+            />
+          </div>
         </div>
         <div className="h-5"></div>
         <PaymentsTable

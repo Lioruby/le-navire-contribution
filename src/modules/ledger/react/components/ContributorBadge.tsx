@@ -1,15 +1,29 @@
 import { motion } from "framer-motion";
 
-export const ContributorBadge = ({ index }: { index: number }) => {
+export const ContributorBadge = ({
+  index,
+  shouldHighlight,
+}: {
+  index: number;
+  shouldHighlight?: boolean;
+}) => {
   const getColor = (index: number) => {
-    if (index === 0 || index === 1 || index === 2)
-      return "bg-yellow-500 border border-yellow-600";
+    if (shouldHighlight) {
+      if (index === 0 || index === 1 || index === 2)
+        return "bg-yellow-500 border border-yellow-600";
+      return "bg-gray-200";
+    }
+
     return "bg-gray-200";
   };
 
   const getGlowColor = (index: number) => {
-    if (index === 0 || index === 1 || index === 2)
-      return "rgba(234, 179, 8, 0.5)";
+    if (shouldHighlight) {
+      if (index === 0 || index === 1 || index === 2)
+        return "rgba(234, 179, 8, 0.5)";
+      return "rgba(229, 231, 235, 0)";
+    }
+
     return "rgba(229, 231, 235, 0)";
   };
 
