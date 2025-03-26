@@ -1,24 +1,14 @@
-import { useDependencies } from "@root/modules/app/react/DepenciesProvider";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import confetti from "canvas-confetti";
-import { ExpensesResponse } from "../core/gateways/expenses.gateway";
 import { WS_URL } from "@root/modules/store/dependencies";
+import { useGetLedger } from "./hooks/use-get-ledger.hook";
 
 export const useExpensesPage = () => {
-  const { expensesGateway } = useDependencies();
   const audioRef = useRef(new Audio("assets/kabuki.mp3"));
 
-  const [expenses, setExpenses] = useState<ExpensesResponse | null>(null);
+  const { ledger, getLedger, isLoading } = useGetLedger();
 
-  const getExpenses = async () => {
-    const expenses = await expensesGateway.getExpenses();
-    setExpenses(expenses);
-  };
   const wsRef = useRef<WebSocket>();
-
-  useEffect(() => {
-    getExpenses();
-  }, []);
 
   useEffect(() => {
     let reconnectAttempt = 0;
@@ -39,7 +29,7 @@ export const useExpensesPage = () => {
           onPaymentReceived();
           return;
         }
-        getExpenses();
+        getLedger();
       };
 
       wsRef.current.onclose = () => {
@@ -75,11 +65,11 @@ export const useExpensesPage = () => {
 
   const onPaymentReceived = () => {
     playSound();
-    getExpenses();
+    getLedger();
     fireConfetti();
   };
 
-  return { expenses, playSound, onPaymentReceived };
+  return { ledger, playSound, onPaymentReceived, isLoading };
 };
 
 const fireConfetti = () => {

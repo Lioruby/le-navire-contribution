@@ -1,5 +1,5 @@
-export namespace ExpensesDomainModel {
-  export type Expense = {
+export namespace LedgerDomainModel {
+  export type Ledger = {
     totalRevenue: number;
     totalExpenses: number;
     totalReceived: number;
@@ -10,11 +10,17 @@ export namespace ExpensesDomainModel {
     amount: number;
     name: string;
     email: string;
+    date?: string;
     paymentType: "one-time" | "recurring";
   };
 
   export type Contributor = {
     amount: number;
     name: string;
+  };
+
+  export type Expenses = {
+    amount: number;
+    date: string;
   };
 }

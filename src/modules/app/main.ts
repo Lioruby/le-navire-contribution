@@ -3,7 +3,7 @@ import { LocalStorageProvider } from "@root/modules/global/providers-impl/local-
 import { BASE_URL, Dependencies } from "@root/modules/store/dependencies";
 import { AppStore, createStore } from "@root/modules/store/store";
 import axios, { AxiosInstance } from "axios";
-import { HttpExpensesGateway } from "../expenses/gateways-impl/http-expenses.gateway";
+import { HttpLedgerGateway } from "../ledger/gateways-impl/http-ledger.gateway";
 
 export class App {
   public dependencies: Dependencies;
@@ -19,12 +19,12 @@ export class App {
   }
 
   setupDependencies(): Dependencies {
-    const expensesGateway = new HttpExpensesGateway(this.httpClient);
+    const ledgerGateway = new HttpLedgerGateway(this.httpClient);
 
     return {
       analyticsGateway: new InMemoryAnalyticsGateway(),
       storageProvider: new LocalStorageProvider(),
-      expensesGateway,
+      ledgerGateway,
     };
   }
 }

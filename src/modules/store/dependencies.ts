@@ -1,6 +1,6 @@
 import { IAnalyticsGateway } from "@root/modules/global/core/gateways/analytics.gateway";
 import { IStorageProvider } from "@root/modules/global/core/providers/storage.provider";
-import { IExpensesGateway } from "../expenses/core/gateways/expenses.gateway";
+import { ILedgerGateway } from "../ledger/core/gateways/ledger.gateway";
 
 export const BASE_URL = "https://lenavire-go-0b9a35f42e35.herokuapp.com/";
 export const WS_URL =
@@ -12,5 +12,5 @@ export type Dependencies = {
 
   /* GATEWAYS */
   analyticsGateway: IAnalyticsGateway;
-  expensesGateway: IExpensesGateway;
+  ledgerGateway: ILedgerGateway;
 };

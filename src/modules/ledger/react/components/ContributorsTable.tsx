@@ -1,14 +1,14 @@
 import { ChevronDownIcon } from "lucide-react";
-import { ExpensesDomainModel } from "../../core/models/expenses.domain-model";
+import { LedgerDomainModel } from "../../core/models/ledger.domain-model";
 import { ContributorBadge } from "./ContributorBadge";
 
-export default function BestContributors({
+export const ContributorsTable = ({
   title,
   contributors,
 }: {
   title: string;
-  contributors: ExpensesDomainModel.Contributor[];
-}) {
+  contributors: LedgerDomainModel.Contributor[];
+}) => {
   if (contributors.length === 0) return null;
 
   return (
@@ -82,4 +82,4 @@ export default function BestContributors({
       </div>
     </div>
   );
-}
+};
