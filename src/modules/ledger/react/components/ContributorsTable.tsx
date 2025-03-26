@@ -22,7 +22,7 @@ export const ContributorsTable = ({
           </h1>
         </div>
       </div>
-      <div className="flow-root">
+      <div className="mt-2 flow-root">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
             <table className="min-w-full divide-y divide-gray-200">
@@ -34,12 +34,6 @@ export const ContributorsTable = ({
                   >
                     <a href="#" className="group inline-flex">
                       Nom
-                      <span className="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
-                        <ChevronDownIcon
-                          aria-hidden="true"
-                          className="size-5"
-                        />
-                      </span>
                     </a>
                   </th>
                   <th
@@ -47,12 +41,6 @@ export const ContributorsTable = ({
                     className="text-left text-xs font-semibold text-black opacity-0"
                   >
                     Type de paiement
-                    <span className="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible">
-                      <ChevronDownIcon
-                        aria-hidden="true"
-                        className="invisible ml-2 size-5 flex-none rounded text-gray-400 group-hover:visible group-focus:visible"
-                      />
-                    </span>
                   </th>
                   <th
                     scope="col"
