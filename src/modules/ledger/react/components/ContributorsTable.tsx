@@ -62,7 +62,7 @@ export const ContributorsTable = ({
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200 bg-white">
+              <tbody className="divide-y divide-gray-200 ">
                 {contributors.map((contributor, index) => (
                   <tr key={contributor.name + index}>
                     <td className="whitespace-nowrap py-2 pl-4 pr-3 text-xs font-medium text-black sm:pl-0">
