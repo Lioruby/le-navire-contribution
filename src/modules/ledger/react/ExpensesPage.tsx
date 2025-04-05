@@ -26,20 +26,24 @@ export const ExpensesPage = () => {
       </div>
 
       <div className="w-full h-full">
-        <div className="flex items-end">
-          <div className="p-2">
-            <ContributorsTable
-              title="Meilleurs contributeurs du mois"
-              contributors={ledger?.monthlyTopContributors.slice(0, 10) ?? []}
-              startIndex={0}
-            />
-          </div>
-          <div className="p-2">
-            <ContributorsTable
-              title=""
-              contributors={ledger?.monthlyTopContributors.slice(10, 20) ?? []}
-              startIndex={10}
-            />
+        <div className="flex items-start min-h-[500px]">
+          <div className="flex items-end">
+            <div className="p-2">
+              <ContributorsTable
+                title="Meilleurs contributeurs du mois"
+                contributors={ledger?.monthlyTopContributors.slice(0, 10) ?? []}
+                startIndex={0}
+              />
+            </div>
+            <div className="p-2">
+              <ContributorsTable
+                title=""
+                contributors={
+                  ledger?.monthlyTopContributors.slice(10, 20) ?? []
+                }
+                startIndex={10}
+              />
+            </div>
           </div>
         </div>
         <div className="h-5"></div>

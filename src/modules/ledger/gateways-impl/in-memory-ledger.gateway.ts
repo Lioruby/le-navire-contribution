@@ -10,7 +10,57 @@ export class InMemoryLedgerGateway implements ILedgerGateway {
       totalRevenue: 1000,
       totalExpenses: 500,
       totalReceived: 500,
-      payments: [],
+      payments: [
+        {
+          amount: 100,
+          name: "John Doe",
+          email: "john.doe@example.com",
+          date: "2021-01-01",
+          paymentType: "one-time",
+        },
+        {
+          amount: 100,
+          name: "John Doe",
+          email: "john.doe@example.com",
+          date: "2021-01-01",
+          paymentType: "one-time",
+        },
+        {
+          amount: 100,
+          name: "John Doe",
+          email: "john.doe@example.com",
+          date: "2021-01-01",
+          paymentType: "one-time",
+        },
+        {
+          amount: 100,
+          name: "John Doe",
+          email: "john.doe@example.com",
+          date: "2021-01-01",
+          paymentType: "one-time",
+        },
+        {
+          amount: 100,
+          name: "John Doe",
+          email: "john.doe@example.com",
+          date: "2021-01-01",
+          paymentType: "one-time",
+        },
+        {
+          amount: 100,
+          name: "John Doe",
+          email: "john.doe@example.com",
+          date: "2021-01-01",
+          paymentType: "one-time",
+        },
+        {
+          amount: 100,
+          name: "John Doe",
+          email: "john.doe@example.com",
+          date: "2021-01-01",
+          paymentType: "one-time",
+        },
+      ],
       allTimeTopContributors: [],
       monthlyTopContributors: [
         {
