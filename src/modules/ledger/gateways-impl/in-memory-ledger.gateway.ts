@@ -12,7 +12,100 @@ export class InMemoryLedgerGateway implements ILedgerGateway {
       totalReceived: 500,
       payments: [],
       allTimeTopContributors: [],
-      monthlyTopContributors: [],
+      monthlyTopContributors: [
+        {
+          name: "John Doe",
+          amount: 100,
+        },
+        {
+          name: "Jane Doe",
+          amount: 200,
+        },
+        {
+          name: "John Smith",
+          amount: 300,
+        },
+        {
+          name: "Jane Smith",
+          amount: 400,
+        },
+        {
+          name: "John Doe",
+          amount: 100,
+        },
+        {
+          name: "Jane Doe",
+          amount: 200,
+        },
+        {
+          name: "John Smith",
+          amount: 300,
+        },
+        {
+          name: "Jane Smith",
+          amount: 400,
+        },
+        {
+          name: "John Doe",
+          amount: 100,
+        },
+        {
+          name: "Jane Doe",
+          amount: 200,
+        },
+        {
+          name: "John Smith",
+          amount: 300,
+        },
+        {
+          name: "Jane Smith",
+          amount: 400,
+        },
+        {
+          name: "John Doe",
+          amount: 100,
+        },
+        {
+          name: "Jane Doe",
+          amount: 200,
+        },
+        {
+          name: "John Smith",
+          amount: 300,
+        },
+        {
+          name: "Jane Smith",
+          amount: 400,
+        },
+        {
+          name: "John Doe",
+          amount: 100,
+        },
+        {
+          name: "Jane Doe",
+          amount: 200,
+        },
+        {
+          name: "John Smith",
+          amount: 300,
+        },
+        {
+          name: "Jane Smith",
+          amount: 400,
+        },
+        {
+          name: "John Doe",
+          amount: 100,
+        },
+        {
+          name: "Jane Doe",
+          amount: 200,
+        },
+        {
+          name: "John Smith",
+          amount: 300,
+        },
+      ],
     });
   }
 

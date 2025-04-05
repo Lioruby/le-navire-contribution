@@ -25,19 +25,20 @@ export const ExpensesPage = () => {
         <TotalRevenue totalRevenue={ledger?.totalRevenue ?? 0} />
       </div>
 
-      <div className="w-full">
-        <div className="flex items-start">
-          <div className="p-2 bg-gray-50 rounded-xl shadow-md">
+      <div className="w-full h-full">
+        <div className="flex items-end">
+          <div className="p-2">
             <ContributorsTable
-              title="Meilleurs donateurs du mois"
-              contributors={ledger?.monthlyTopContributors ?? []}
+              title="Meilleurs contributeurs du mois"
+              contributors={ledger?.monthlyTopContributors.slice(0, 10) ?? []}
+              startIndex={0}
             />
           </div>
           <div className="p-2">
             <ContributorsTable
-              title="Meilleurs donateurs all time"
-              contributors={ledger?.allTimeTopContributors ?? []}
-              highlightTop={false}
+              title=""
+              contributors={ledger?.monthlyTopContributors.slice(10, 20) ?? []}
+              startIndex={10}
             />
           </div>
         </div>

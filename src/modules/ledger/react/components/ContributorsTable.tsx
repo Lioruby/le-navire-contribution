@@ -1,16 +1,17 @@
-import { ChevronDownIcon } from "lucide-react";
 import { LedgerDomainModel } from "../../core/models/ledger.domain-model";
 import { ContributorBadge } from "./ContributorBadge";
 
 export const ContributorsTable = ({
   title,
   contributors,
-  highlightTop = true,
+  startIndex = 0,
 }: {
   title: string;
   contributors: LedgerDomainModel.Contributor[];
-  highlightTop?: boolean;
+  startIndex?: number;
 }) => {
+  const highlightTop = startIndex === 0;
+
   if (contributors.length === 0) return null;
 
   return (
@@ -56,7 +57,7 @@ export const ContributorsTable = ({
                     <td className="whitespace-nowrap py-2 pl-4 pr-3 text-xs font-medium text-black sm:pl-0">
                       <div className="flex items-center gap-2">
                         <ContributorBadge
-                          index={index}
+                          index={index + startIndex}
                           shouldHighlight={highlightTop}
                         />
                         <p>{contributor.name}</p>
