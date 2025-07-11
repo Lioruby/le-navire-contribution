@@ -1,6 +1,6 @@
 import { InMemoryAnalyticsGateway } from "@root/modules/global/gateways-impl/in-memory-analytics.gateway";
 import { LocalStorageProvider } from "@root/modules/global/providers-impl/local-storage.provider";
-import { BASE_URL, Dependencies } from "@root/modules/store/dependencies";
+import { Dependencies } from "@root/modules/store/dependencies";
 import { AppStore, createStore } from "@root/modules/store/store";
 import axios, { AxiosInstance } from "axios";
 import { HttpLedgerGateway } from "../ledger/gateways-impl/http-ledger.gateway";
@@ -13,7 +13,7 @@ export class App {
 
   constructor() {
     this.httpClient = axios.create({
-      baseURL: BASE_URL,
+      baseURL: import.meta.env.VITE_BASE_API_URL,
     });
     this.dependencies = this.setupDependencies();
     this.store = createStore({ dependencies: this.dependencies });
