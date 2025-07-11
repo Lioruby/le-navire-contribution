@@ -4,6 +4,7 @@ import { StubStorageProvider } from "@root/modules/global/core/testing/stub-stor
 import { InMemoryAnalyticsGateway } from "@root/modules/global/gateways-impl/in-memory-analytics.gateway";
 import { AppState } from "@root/modules/store/app-state";
 import { InMemoryLedgerGateway } from "../ledger/gateways-impl/in-memory-ledger.gateway";
+import { InMemoryCheckoutGateway } from "../ledger/gateways-impl/in-memory-checkout.gateway";
 
 /**
  * Create testing dependencies with provided defaults
@@ -16,6 +17,7 @@ const createDependencies = (
   analyticsGateway: new InMemoryAnalyticsGateway(),
   storageProvider: new StubStorageProvider(),
   ledgerGateway: new InMemoryLedgerGateway(),
+  checkoutGateway: new InMemoryCheckoutGateway(),
   ...dependencies,
 });
 
