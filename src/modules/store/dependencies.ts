@@ -3,7 +3,7 @@ import { IStorageProvider } from "@root/modules/global/core/providers/storage.pr
 import { ILedgerGateway } from "../ledger/core/gateways/ledger.gateway";
 import { ICheckoutGateway } from "../ledger/core/gateways/checkout.gateway";
 
-export const BASE_URL = "http://localhost:3000/";
+export const BASE_URL = import.meta.env.VITE_BASE_API_URL;
 export const WS_URL =
   "wss://lenavire-go-0b9a35f42e35.herokuapp.com/ledger-activity";
 
